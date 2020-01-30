@@ -18,8 +18,11 @@
       href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
       rel="stylesheet"
     />
+    
     <link rel="stylesheet" href="style.css" />
     <title>Work Day Scheduler</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   </head>
 
   <body>
@@ -30,9 +33,73 @@
     </header>
     <div class="container">
       <!-- Timeblocks go here -->
+      <div class="row">
+        <div class="col-2 time">
+          9 am
+        </div>
+        <textarea class="form-control form-control-lg col-9 pb-0" type="text" placeholder=""></textarea>
+        <button type="button" class="btn btn-info col-1 saveBtn">Info</button>
+      </div>
+      <div class="row">
+        <div class="col-2 time">
+          10 am
+        </div>
+        <textarea class="form-control form-control-lg col-9" type="text" placeholder=""></textarea>
+        <button type="button" class="btn btn-info col-1 saveBtn">Info</button>
+      </div>
+      <div class="row">
+        <div class="col-2 time">
+          11 am
+        </div>
+        <textarea class="form-control form-control-lg col-9" type="text" placeholder=""></textarea>
+        <button type="button" class="btn btn-info col-1 saveBtn">Info</button>
+      </div>
+      <div class="row">
+        <div class="col-2 time">
+          12 pm
+        </div>
+        <textarea class="form-control form-control-lg col-9" type="text" placeholder=""></textarea>
+        <button type="button" class="btn btn-info col-1 saveBtn">Info</button>
+      </div>
+      <div class="row">
+        <div class="col-2 time">
+          1 pm
+        </div>
+        <textarea class="form-control form-control-lg col-9" type="text" placeholder=""></textarea>
+        <button type="button" class="btn btn-info col-1 saveBtn">Info</button>
+      </div>
+      <div class="row">
+        <div class="col-2 time">
+          2 pm
+        </div>
+        <textarea class="form-control form-control-lg col-9" type="text" placeholder=""></textarea>
+        <button type="button" class="btn btn-info col-1 saveBtn">Info</button>
+      </div>
+      <div class="row">
+        <div class="col-2 time">
+          3 pm
+        </div>
+        <textarea class="form-control form-control-lg col-9" type="text" placeholder=""></textarea>
+        <button type="button" class="btn btn-info col-1 saveBtn">Info</button>
+      </div>
+      <div class="row">
+        <div class="col-2 time">
+          4 pm
+        </div>
+        <textarea class="form-control form-control-lg col-9" type="text" placeholder=""></textarea>
+        <button type="button" class="btn btn-info col-1 saveBtn">Info</button>
+      </div>
+      <div class="row">
+        <div class="col-2 time">
+          5 pm
+        </div>
+        <textarea class="form-control form-control-lg col-9" type="text" placeholder=""></textarea>
+        <button type="button" class="btn btn-info col-1 saveBtn">Info</button>
+      </div>
     </div>
+    <script>
+      $("#currentDay").text(moment().format('LL'))
 
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    </script>
   </body>
 </html>

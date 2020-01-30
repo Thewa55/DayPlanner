@@ -31,7 +31,7 @@ textarea{
 }
 
 .row {
-  white-space: pre-wrap;
+  white-space: pre-line;
   height: 80px;
   border-top: 1px solid white;;
 }
@@ -63,9 +63,21 @@ textarea{
   border-bottom-right-radius: 15px;
   background-color: #06AED5;
   color: white;
+  height: 80px !important;
 }
 
 .saveBtn i:hover {
   font-size: 20px;
   transition: all .3s ease-in-out;
+}
+
+textarea{
+  height: 80px !important;
+}
+
+.time{
+  font-size: 2vw;
+  text-align: center;
+  border-top: 2px solid;
+  border-color: gray;
 }
