@@ -38,63 +38,66 @@
           9 am
         </div>
         <textarea class="form-control form-control-lg col-9" type="text" placeholder=""></textarea>
-        <button type="button" class="btn btn-info col-1 saveBtn" id="saveBtn1" value="0">💾</button>
+        <button type="button" class="btn btn-info col-1 saveBtn" id="saveBtn1">💾</button>
       </div>
       <div class="row">
         <div class="col-2 time" value="10">
           10 am
         </div>
         <textarea class="form-control form-control-lg col-9" type="text" placeholder=""></textarea>
-        <button type="button" class="btn btn-info col-1 saveBtn" id="saveBtn2" value="1" >💾</button>
+        <button type="button" class="btn btn-info col-1 saveBtn" id="saveBtn2">💾</button>
       </div>
       <div class="row">
         <div class="col-2 time" value="11">
           11 am
         </div>
         <textarea class="form-control form-control-lg col-9" type="text" placeholder=""></textarea>
-        <button type="button" class="btn btn-info col-1 saveBtn" id="saveBtn3" value="2">💾</button>
+        <button type="button" class="btn btn-info col-1 saveBtn" id="saveBtn3">💾</button>
       </div>
       <div class="row">
         <div class="col-2 time" value="12">
           12 pm
         </div>
         <textarea class="form-control form-control-lg col-9" type="text" placeholder=""></textarea>
-        <button type="button" class="btn btn-info col-1 saveBtn" id="saveBtn4" value="3">💾</button>
+        <button type="button" class="btn btn-info col-1 saveBtn" id="saveBtn4">💾</button>
       </div>
       <div class="row">
         <div class="col-2 time" value="13">
           1 pm
         </div>
         <textarea class="form-control form-control-lg col-9" type="text" placeholder=""></textarea>
-        <button type="button" class="btn btn-info col-1 saveBtn" id="saveBtn5" value="4">💾</button>
+        <button type="button" class="btn btn-info col-1 saveBtn" id="saveBtn5">💾</button>
       </div>
       <div class="row">
         <div class="col-2 time" value="14">
           2 pm
         </div>
         <textarea class="form-control form-control-lg col-9" type="text" placeholder=""></textarea>
-        <button type="button" class="btn btn-info col-1 saveBtn" id="saveBtn6" value="5">💾</button>
+        <button type="button" class="btn btn-info col-1 saveBtn" id="saveBtn6">💾</button>
       </div>
       <div class="row">
         <div class="col-2 time" value="15">
           3 pm
         </div>
         <textarea class="form-control form-control-lg col-9" type="text" placeholder=""></textarea>
-        <button type="button" class="btn btn-info col-1 saveBtn" id="saveBtn7" value="6">💾</button>
+        <button type="button" class="btn btn-info col-1 saveBtn" id="saveBtn7">💾</button>
       </div>
       <div class="row">
         <div class="col-2 time" value="16">
           4 pm
         </div>
         <textarea class="form-control form-control-lg col-9" type="text" placeholder=""></textarea>
-        <button type="button" class="btn btn-info col-1 saveBtn" id="saveBtn8" value="7">💾</button>
+        <button type="button" class="btn btn-info col-1 saveBtn" id="saveBtn8">💾</button>
       </div>
       <div class="row">
         <div class="col-2 time" value="17">
           5 pm
         </div>
         <textarea class="form-control form-control-lg col-9" type="text" placeholder=""></textarea>
-        <button type="button" class="btn btn-info col-1 saveBtn" id="saveBtn9" value="8">💾</button>
+        <button type="button" class="btn btn-info col-1 saveBtn" id="saveBtn9">💾</button>
+      </div>
+      <div class="row justify-content-center">
+        <button type="button" class="btn btn-danger col-2 mt-3" id="clear">CLEAR ALL</button>
       </div>
     </div>
     <script>
@@ -106,16 +109,16 @@
       var currentHour = moment().format("HH")
       var time = document.querySelectorAll(".time")
       var textArea = document.querySelectorAll("textarea")
+
+      //for loop to check if the planner's time is greater, equal or less then current time
       for(i = 0; i < time.length; i++){
         var plannerTime = time[i].getAttribute("value")
         plannerTime = parseInt(plannerTime)
-        color.push(plannerTime)
-      }
-      for(i = 0; i< color.length; i++){
-        if(color[i]< currentHour){
+        if(plannerTime< currentHour){
           textArea[i].classList.add("past")
+          textArea[i].setAttribute("readonly", true)
         }
-        else if(color[i] > currentHour){
+        else if(plannerTime > currentHour){
           textArea[i].classList.add("future")
         }
         else{
@@ -125,6 +128,7 @@
       
       renderDay()
 
+      //all the save buttons
       $("#saveBtn1").on("click", function(){
         localStorage.setItem("9 am",textArea[0].value)
       })
@@ -161,6 +165,29 @@
         localStorage.setItem("5 pm",textArea[8].value)
       })
 
+      $("#clear").on("click", function(){
+        var userClear = confirm("Are you sure you want to clear all, including saved data? (Ok to clear, Cancel to cancel")
+        if(!userClear){
+          return
+        }
+        else{
+          alert("Everything is cleared")
+          for(i = 0; i < time.length; i++){
+            textArea[i].value=""
+          }
+          localStorage.clear("9 am");
+          localStorage.clear("10 am");
+          localStorage.clear("11 am");
+          localStorage.clear("12 pm");
+          localStorage.clear("1 pm");
+          localStorage.clear("2 pm");
+          localStorage.clear("3 pm");
+          localStorage.clear("4 pm");
+          localStorage.clear("5 pm");
+        }
+      })
+
+      //rendering local storage to planner
       function renderDay(){
         textArea[0].value = localStorage.getItem("9 am")
         textArea[1].value = localStorage.getItem("10 am")
