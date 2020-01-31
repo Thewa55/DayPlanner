@@ -34,72 +34,93 @@
     <div class="container">
       <!-- Timeblocks go here -->
       <div class="row">
-        <div class="col-2 time">
+        <div class="col-2 time" value="9">
           9 am
         </div>
-        <textarea class="form-control form-control-lg col-9 pb-0" type="text" placeholder=""></textarea>
-        <button type="button" class="btn btn-info col-1 saveBtn">Info</button>
+        <textarea class="form-control form-control-lg col-9" type="text" placeholder=""></textarea>
+        <button type="button" class="btn btn-info col-1 saveBtn">💾</button>
       </div>
       <div class="row">
-        <div class="col-2 time">
+        <div class="col-2 time" value="10">
           10 am
         </div>
         <textarea class="form-control form-control-lg col-9" type="text" placeholder=""></textarea>
-        <button type="button" class="btn btn-info col-1 saveBtn">Info</button>
+        <button type="button" class="btn btn-info col-1 saveBtn">💾</button>
       </div>
       <div class="row">
-        <div class="col-2 time">
+        <div class="col-2 time" value="11">
           11 am
         </div>
         <textarea class="form-control form-control-lg col-9" type="text" placeholder=""></textarea>
-        <button type="button" class="btn btn-info col-1 saveBtn">Info</button>
+        <button type="button" class="btn btn-info col-1 saveBtn">💾</button>
       </div>
       <div class="row">
-        <div class="col-2 time">
+        <div class="col-2 time" value="12">
           12 pm
         </div>
         <textarea class="form-control form-control-lg col-9" type="text" placeholder=""></textarea>
-        <button type="button" class="btn btn-info col-1 saveBtn">Info</button>
+        <button type="button" class="btn btn-info col-1 saveBtn">💾</button>
       </div>
       <div class="row">
-        <div class="col-2 time">
+        <div class="col-2 time" value="13">
           1 pm
         </div>
         <textarea class="form-control form-control-lg col-9" type="text" placeholder=""></textarea>
-        <button type="button" class="btn btn-info col-1 saveBtn">Info</button>
+        <button type="button" class="btn btn-info col-1 saveBtn">💾</button>
       </div>
       <div class="row">
-        <div class="col-2 time">
+        <div class="col-2 time" value="14">
           2 pm
         </div>
         <textarea class="form-control form-control-lg col-9" type="text" placeholder=""></textarea>
-        <button type="button" class="btn btn-info col-1 saveBtn">Info</button>
+        <button type="button" class="btn btn-info col-1 saveBtn">💾</button>
       </div>
       <div class="row">
-        <div class="col-2 time">
+        <div class="col-2 time" value="15">
           3 pm
         </div>
         <textarea class="form-control form-control-lg col-9" type="text" placeholder=""></textarea>
-        <button type="button" class="btn btn-info col-1 saveBtn">Info</button>
+        <button type="button" class="btn btn-info col-1 saveBtn">💾</button>
       </div>
       <div class="row">
-        <div class="col-2 time">
+        <div class="col-2 time" value="16">
           4 pm
         </div>
         <textarea class="form-control form-control-lg col-9" type="text" placeholder=""></textarea>
-        <button type="button" class="btn btn-info col-1 saveBtn">Info</button>
+        <button type="button" class="btn btn-info col-1 saveBtn">💾</button>
       </div>
       <div class="row">
-        <div class="col-2 time">
+        <div class="col-2 time" value="17">
           5 pm
         </div>
         <textarea class="form-control form-control-lg col-9" type="text" placeholder=""></textarea>
-        <button type="button" class="btn btn-info col-1 saveBtn">Info</button>
+        <button type="button" class="btn btn-info col-1 saveBtn">💾</button>
       </div>
     </div>
     <script>
+      var current = 0
+      var color = []
       $("#currentDay").text(moment().format('LL'))
-
+      var currentHour = moment().format("HH")
+      var time = document.querySelectorAll(".time")
+      var textArea = document.querySelectorAll("textarea")
+      for(i = 0; i < time.length; i++){
+        var plannerTime = time[i].getAttribute("value")
+        plannerTime = parseInt(plannerTime)
+        color.push(plannerTime)
+      }
+      for(i = 0; i< color.length; i++){
+        if(color[i]< currentHour){
+          textArea[i].classList.add("past")
+        }
+        else if(color[i] > currentHour){
+          textArea[i].classList.add("future")
+        }
+        else{
+          textArea[i].classList.add("present")
+        }
+      }
+      
     </script>
   </body>
 </html>
