@@ -38,68 +38,70 @@
           9 am
         </div>
         <textarea class="form-control form-control-lg col-9" type="text" placeholder=""></textarea>
-        <button type="button" class="btn btn-info col-1 saveBtn">💾</button>
+        <button type="button" class="btn btn-info col-1 saveBtn" id="saveBtn1" value="0">💾</button>
       </div>
       <div class="row">
         <div class="col-2 time" value="10">
           10 am
         </div>
         <textarea class="form-control form-control-lg col-9" type="text" placeholder=""></textarea>
-        <button type="button" class="btn btn-info col-1 saveBtn">💾</button>
+        <button type="button" class="btn btn-info col-1 saveBtn" id="saveBtn2" value="1" >💾</button>
       </div>
       <div class="row">
         <div class="col-2 time" value="11">
           11 am
         </div>
         <textarea class="form-control form-control-lg col-9" type="text" placeholder=""></textarea>
-        <button type="button" class="btn btn-info col-1 saveBtn">💾</button>
+        <button type="button" class="btn btn-info col-1 saveBtn" id="saveBtn3" value="2">💾</button>
       </div>
       <div class="row">
         <div class="col-2 time" value="12">
           12 pm
         </div>
         <textarea class="form-control form-control-lg col-9" type="text" placeholder=""></textarea>
-        <button type="button" class="btn btn-info col-1 saveBtn">💾</button>
+        <button type="button" class="btn btn-info col-1 saveBtn" id="saveBtn4" value="3">💾</button>
       </div>
       <div class="row">
         <div class="col-2 time" value="13">
           1 pm
         </div>
         <textarea class="form-control form-control-lg col-9" type="text" placeholder=""></textarea>
-        <button type="button" class="btn btn-info col-1 saveBtn">💾</button>
+        <button type="button" class="btn btn-info col-1 saveBtn" id="saveBtn5" value="4">💾</button>
       </div>
       <div class="row">
         <div class="col-2 time" value="14">
           2 pm
         </div>
         <textarea class="form-control form-control-lg col-9" type="text" placeholder=""></textarea>
-        <button type="button" class="btn btn-info col-1 saveBtn">💾</button>
+        <button type="button" class="btn btn-info col-1 saveBtn" id="saveBtn6" value="5">💾</button>
       </div>
       <div class="row">
         <div class="col-2 time" value="15">
           3 pm
         </div>
         <textarea class="form-control form-control-lg col-9" type="text" placeholder=""></textarea>
-        <button type="button" class="btn btn-info col-1 saveBtn">💾</button>
+        <button type="button" class="btn btn-info col-1 saveBtn" id="saveBtn7" value="6">💾</button>
       </div>
       <div class="row">
         <div class="col-2 time" value="16">
           4 pm
         </div>
         <textarea class="form-control form-control-lg col-9" type="text" placeholder=""></textarea>
-        <button type="button" class="btn btn-info col-1 saveBtn">💾</button>
+        <button type="button" class="btn btn-info col-1 saveBtn" id="saveBtn8" value="7">💾</button>
       </div>
       <div class="row">
         <div class="col-2 time" value="17">
           5 pm
         </div>
         <textarea class="form-control form-control-lg col-9" type="text" placeholder=""></textarea>
-        <button type="button" class="btn btn-info col-1 saveBtn">💾</button>
+        <button type="button" class="btn btn-info col-1 saveBtn" id="saveBtn9" value="8">💾</button>
       </div>
     </div>
     <script>
       var current = 0
       var color = []
+      var buttonPressed = document.querySelectorAll(".btn")
+
       $("#currentDay").text(moment().format('LL'))
       var currentHour = moment().format("HH")
       var time = document.querySelectorAll(".time")
@@ -121,6 +123,56 @@
         }
       }
       
+      renderDay()
+
+      $("#saveBtn1").on("click", function(){
+        localStorage.setItem("9 am",textArea[0].value)
+      })
+
+      $("#saveBtn2").on("click", function(){
+        localStorage.setItem("10 am",textArea[1].value)
+      })
+
+      $("#saveBtn3").on("click", function(){
+        localStorage.setItem("11 am",textArea[2].value)
+      })
+
+      $("#saveBtn4").on("click", function(){
+        localStorage.setItem("12 pm",textArea[3].value)
+      })
+
+      $("#saveBtn5").on("click", function(){
+        localStorage.setItem("1 pm",textArea[4].value)
+      })
+
+      $("#saveBtn6").on("click", function(){
+        localStorage.setItem("2 pm",textArea[5].value)
+      })
+
+      $("#saveBtn7").on("click", function(){
+        localStorage.setItem("3 pm",textArea[6].value)
+      })
+
+      $("#saveBtn8").on("click", function(){
+        localStorage.setItem("4 pm",textArea[7].value)
+      })
+
+      $("#saveBtn9").on("click", function(){
+        localStorage.setItem("5 pm",textArea[8].value)
+      })
+
+      function renderDay(){
+        textArea[0].value = localStorage.getItem("9 am")
+        textArea[1].value = localStorage.getItem("10 am")
+        textArea[2].value = localStorage.getItem("11 am")
+        textArea[3].value = localStorage.getItem("12 pm")
+        textArea[4].value = localStorage.getItem("1 pm")
+        textArea[5].value = localStorage.getItem("2 pm")
+        textArea[6].value = localStorage.getItem("3 pm")
+        textArea[7].value = localStorage.getItem("4 pm")
+        textArea[8].value = localStorage.getItem("5 pm")
+      }
+
     </script>
   </body>
 </html>
